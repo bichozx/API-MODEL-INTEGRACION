@@ -1,6 +1,7 @@
 package com.example.API.MODEL.INTEGRACION.modelos.dtos;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class HabilidadDTO {
 
@@ -8,6 +9,8 @@ public class HabilidadDTO {
     private String nombre;
     private String nivel;
     private String tipo;
+    @NotNull(message = "El perfil de estudiante es obligatorio")
+    private Long perfilEstudianteId;
 
     public HabilidadDTO() {}
 
@@ -16,6 +19,7 @@ public class HabilidadDTO {
         this.nombre = nombre;
         this.nivel = nivel;
         this.tipo = tipo;
+        this.perfilEstudianteId = perfilEstudianteId;
     }
 
     // Getters y setters
@@ -30,4 +34,8 @@ public class HabilidadDTO {
 
     public String getTipo() { return tipo; }
     public void setTipo(String tipo) { this.tipo = tipo; }
+
+    // ✅ Getter y Setter del nuevo campo
+    public Long getPerfilEstudianteId() { return perfilEstudianteId; }
+    public void setPerfilEstudianteId(Long perfilEstudianteId) { this.perfilEstudianteId = perfilEstudianteId; }
 }

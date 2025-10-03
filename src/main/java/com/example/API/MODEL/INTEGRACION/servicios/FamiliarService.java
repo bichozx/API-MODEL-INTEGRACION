@@ -124,7 +124,7 @@ public class FamiliarService {
 
         // Mapear estudiantes a PerfilEstudianteDTO
         return vinculos.stream()
-                .map(v -> perfilMapper.toDTO(v.getEstudiante()))
+                .map(v -> perfilMapper.toDTO(v.getEstudiante().getPerfilEstudiante()))
                 .collect(Collectors.toList());
     }
 
