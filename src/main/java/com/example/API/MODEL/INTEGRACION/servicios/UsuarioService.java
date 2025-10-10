@@ -32,8 +32,8 @@ public class UsuarioService {
         Usuario usuario = usuarioMapper.toEntity(usuarioCreateDTO);
 
         // Encriptar la contraseña antes de guardar
-        String contraseñaEncriptada = passwordEncoder.encode(usuarioCreateDTO.getContraseña());
-        usuario.setContraseña(contraseñaEncriptada);
+        String contraseñaEncriptada = passwordEncoder.encode(usuarioCreateDTO.getPassword());
+        usuario.setPassword(contraseñaEncriptada);
 
         Usuario guardado = usuarioRepository.save(usuario);
         return usuarioMapper.toDTO(guardado);

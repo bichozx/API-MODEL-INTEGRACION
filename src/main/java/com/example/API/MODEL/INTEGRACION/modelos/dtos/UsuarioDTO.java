@@ -10,7 +10,7 @@ import jakarta.validation.constraints.Size;
 public class UsuarioDTO {
 
     @NotNull(message = "El ID no puede ser nulo")
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "El nombre es obligatorio")
     @Size(min = 2, max = 50, message = "El nombre debe tener entre 2 y 50 caracteres")
@@ -31,7 +31,7 @@ public class UsuarioDTO {
     public UsuarioDTO() {}
 
     // Constructor completo
-    public UsuarioDTO(Integer id, String nombre, String correo, EstadosUsuario estado, RolesUsuario rol) {
+    public UsuarioDTO(Long id, String nombre, String correo, EstadosUsuario estado, RolesUsuario rol) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
@@ -40,8 +40,8 @@ public class UsuarioDTO {
     }
 
     // Getters y Setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) { this.nombre = nombre; }

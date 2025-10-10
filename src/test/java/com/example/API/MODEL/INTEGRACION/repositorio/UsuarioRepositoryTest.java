@@ -23,7 +23,7 @@ class UsuarioRepositoryTest {
         Usuario usuario = new Usuario();
         usuario.setNombre("Juan");
         usuario.setCorreo("juan@test.com");
-        usuario.setContraseña("123456");
+        usuario.setPassword("123456");
         usuario.setRol(RolesUsuario.Administrador);
         usuario.setEstado(EstadosUsuario.Activo);
 

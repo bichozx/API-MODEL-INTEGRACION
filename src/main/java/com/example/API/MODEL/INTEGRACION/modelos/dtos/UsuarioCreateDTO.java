@@ -17,7 +17,7 @@ public class UsuarioCreateDTO extends UsuarioDTO {
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 6, message = "La contraseña debe tener mínimo 6 caracteres")
-    private String contraseña;
+    private String password;
 
     @NotNull(message = "El estado es obligatorio")
     private EstadosUsuario estado;
@@ -32,8 +32,8 @@ public class UsuarioCreateDTO extends UsuarioDTO {
     public String getCorreo() { return correo; }
     public void setCorreo(String correo) { this.correo = correo; }
 
-    public String getContraseña() { return contraseña; }
-    public void setContraseña(String contraseña) { this.contraseña = contraseña; }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
     public EstadosUsuario getEstado() { return estado; }
     public void setEstado(EstadosUsuario estado) { this.estado = estado; }

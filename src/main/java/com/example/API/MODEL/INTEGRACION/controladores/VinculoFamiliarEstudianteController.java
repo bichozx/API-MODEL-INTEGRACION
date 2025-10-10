@@ -1,14 +1,12 @@
 package com.example.API.MODEL.INTEGRACION.controladores;
 
-import com.example.API.MODEL.INTEGRACION.modelos.dtos.PerfilEstudianteDTO;
-import com.example.API.MODEL.INTEGRACION.modelos.dtos.VinculoFamiliarEstudianteCreateDTO;
-import com.example.API.MODEL.INTEGRACION.modelos.dtos.VinculoFamiliarEstudianteDTO;
+import com.example.API.MODEL.INTEGRACION.modelos.dtos.*;
 import com.example.API.MODEL.INTEGRACION.servicios.VinculoFamiliarEstudianteService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,43 +16,37 @@ public class VinculoFamiliarEstudianteController {
     @Autowired
     private VinculoFamiliarEstudianteService vinculoService;
 
-    // Crear vínculo
     @PostMapping
     public ResponseEntity<VinculoFamiliarEstudianteDTO> crearVinculo(@Valid @RequestBody VinculoFamiliarEstudianteCreateDTO dto) {
         return ResponseEntity.ok(vinculoService.crearVinculo(dto));
     }
 
-    // Listar todos los vínculos
     @GetMapping
     public ResponseEntity<List<VinculoFamiliarEstudianteDTO>> listarVinculos() {
         return ResponseEntity.ok(vinculoService.listarVinculos());
     }
 
-    //listar Por Estudiante
     @GetMapping("/estudiante/{id}")
     public ResponseEntity<List<VinculoFamiliarEstudianteDTO>> listarPorEstudiante(@PathVariable Long id) {
         return ResponseEntity.ok(vinculoService.listarPorEstudiante(id));
     }
 
-    // Obtener por ID
     @GetMapping("/{id}")
     public ResponseEntity<VinculoFamiliarEstudianteDTO> obtenerPorId(@PathVariable Long id) {
         return ResponseEntity.ok(vinculoService.obtenerPorId(id));
     }
 
-    // Actualizar autorizado
     @PatchMapping("/{id}/autorizado")
     public ResponseEntity<VinculoFamiliarEstudianteDTO> actualizarAutorizado(
-            @PathVariable Long id,
-            @RequestParam Boolean autorizado) {
+            @PathVariable Long id, @RequestParam Boolean autorizado) {
         return ResponseEntity.ok(vinculoService.actualizarAutorizado(id, autorizado));
     }
 
-    // Eliminar vínculo
+    // ✅ Endpoint HU16: Eliminar vínculo
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        vinculoService.eliminar(id);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> eliminar(@PathVariable Long id) {
+        String mensaje = vinculoService.eliminar(id);
+        return ResponseEntity.ok(mensaje);
     }
 
     @GetMapping("/familiares/{id}/perfil-estudiante")
@@ -62,5 +54,10 @@ public class VinculoFamiliarEstudianteController {
         return ResponseEntity.ok(vinculoService.obtenerPerfilEstudiantePorFamiliar(id));
     }
 
+    // ✅ HU20 – Listar todos los vínculos registrados con nombres
+    @GetMapping("/detallado")
+    public ResponseEntity<List<VinculoFamiliarEstudianteViewDTO>> listarVinculosDetallados() {
+        return ResponseEntity.ok(vinculoService.listarVinculosConNombres());
+    }
 
 }

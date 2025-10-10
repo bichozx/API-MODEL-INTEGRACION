@@ -16,5 +16,9 @@ public interface IFamiliarRepository extends JpaRepository<Familiar, Long> {
     // Listar familiares asociados a un estudiante
     @Query("SELECT v.familiar FROM VinculoFamiliarEstudiante v WHERE v.estudiante.id = :estudianteId")
     List<Familiar> findFamiliaresPorEstudiante(@Param("estudianteId") Long estudianteId);
+
+    // ✅ HU18 – Verificar existencia por correo
+    boolean existsByCorreo(String correo);
+
 }
 

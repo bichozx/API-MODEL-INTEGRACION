@@ -18,5 +18,7 @@ public interface IUsuarioRepository extends JpaRepository<Usuario, Long> {
 
     // (Opcional) Buscar todos los usuarios por estado
     List<Usuario> findByEstado(EstadosUsuario estado);
+
+    boolean existsByCorreo(String correo);
 }
 

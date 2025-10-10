@@ -26,7 +26,7 @@ public class Usuario {
 
     @NotBlank(message = "La contraseña es obligatoria")
     @Size(min = 6, message = "La contraseña debe tener al menos 6 caracteres")
-    private String contraseña;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
@@ -40,11 +40,11 @@ public class Usuario {
     }
 
 
-    public Usuario(Long id, String nombre, String correo, String contraseña, RolesUsuario rol, EstadosUsuario estado) {
+    public Usuario(Long id, String nombre, String correo, String password, RolesUsuario rol, EstadosUsuario estado) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
-        this.contraseña = contraseña;
+        this.password = password;
         this.rol = rol;
         this.estado = estado;
     }
@@ -73,12 +73,12 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public RolesUsuario getRol() {

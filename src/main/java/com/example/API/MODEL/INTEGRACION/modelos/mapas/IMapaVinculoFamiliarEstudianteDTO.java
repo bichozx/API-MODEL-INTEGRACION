@@ -3,6 +3,7 @@ package com.example.API.MODEL.INTEGRACION.modelos.mapas;
 import com.example.API.MODEL.INTEGRACION.modelos.VinculoFamiliarEstudiante;
 import com.example.API.MODEL.INTEGRACION.modelos.dtos.VinculoFamiliarEstudianteCreateDTO;
 import com.example.API.MODEL.INTEGRACION.modelos.dtos.VinculoFamiliarEstudianteDTO;
+import com.example.API.MODEL.INTEGRACION.modelos.dtos.VinculoFamiliarEstudianteViewDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -19,5 +20,10 @@ public interface IMapaVinculoFamiliarEstudianteDTO {
     @Mapping(target = "familiar", ignore = true)
     @Mapping(target = "estudiante", ignore = true)
     VinculoFamiliarEstudiante toEntity(VinculoFamiliarEstudianteCreateDTO dto);
+
+    // 🔹 Nuevo mapping para HU20
+    @Mapping(source = "familiar.usuario.nombre", target = "nombreFamiliar")
+    @Mapping(source = "estudiante.usuario.nombre", target = "nombreEstudiante")
+    VinculoFamiliarEstudianteViewDTO toViewDTO(VinculoFamiliarEstudiante vinculo);
 }
 

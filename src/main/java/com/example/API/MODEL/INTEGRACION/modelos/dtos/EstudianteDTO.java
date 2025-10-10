@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 public class EstudianteDTO {
 
-    private Integer id;
+    private Long id;
 
     @NotBlank(message = "El programa es obligatorio")
     @Size(min = 3, max = 100, message = "El programa debe tener entre 3 y 100 caracteres")
@@ -29,7 +29,7 @@ public class EstudianteDTO {
     public EstudianteDTO() {
     }
 
-    public EstudianteDTO(Integer id, UsuarioDTO usuario, LocalDate fechaNacimiento, Double promedio, Integer semestre, String programa) {
+    public EstudianteDTO(Long id, UsuarioDTO usuario, LocalDate fechaNacimiento, Double promedio, Integer semestre, String programa) {
         this.id = id;
         this.usuario = usuario;
         this.fechaNacimiento = fechaNacimiento;
@@ -40,8 +40,8 @@ public class EstudianteDTO {
 
 
     // Getters y Setters
-    public Integer getId() { return id; }
-    public void setId(Integer id) { this.id = id; }
+    public long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
     public String getPrograma() { return programa; }
     public void setPrograma(String programa) { this.programa = programa; }
